@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* box-shadow: 0 0 0 1px red inset; */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #0d1117;
+  color: aliceblue;
+}
+
+.mainSection {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  text-align: center;
+  padding: 1rem 2rem;
+}
+
+.mainSection h1 {
+  border-bottom: 2px solid;
+  font-size: 2rem;
+  color: aliceblue;
+  margin-top: 4rem;
+}
+
+.mainSection .boxQuestion {
+  border: 1px solid #1f6feb;
+  padding: 1rem 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
