@@ -2,7 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* box-shadow: 0 0 0 1px red inset; */
+  /*box-shadow: 0 0 0 1px red inset;*/
+}
+
+html {
+  height: 100%;
+  width: 100%;
 }
 
 body {
@@ -10,33 +15,163 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #0d1117;
+  background-color: #212529;
   color: aliceblue;
 }
 
 .mainSection {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 5rem;
-  text-align: center;
-  padding: 1rem 2rem;
-}
-
-.mainSection h1 {
-  border-bottom: 2px solid;
-  font-size: 2rem;
-  color: aliceblue;
-  margin-top: 4rem;
-}
-
-.mainSection .boxQuestion {
-  border: 1px solid #1f6feb;
-  padding: 1rem 2rem;
+  width: 50%;
+  padding: 2rem;
 }
 
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2rem;
+  width: 100%;
+}
+
+.mainSection form .boxQuestion {
+  background: #0d1117;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #010409,
+    -5px -5px 10px #464646;
+  padding: 1rem 2rem;
+  width: 100%;
+}
+
+@media (max-width: 800px) and (min-width:600px) {
+  .mainSection {
+    gap: 3rem;
+    width: 65%;
+  }
+}
+
+@media (max-width: 599px) and (min-width:450px) {
+  .mainSection {
+    gap: 3rem;
+    width: 75%;
+  }
+}
+
+@media (max-width: 449px) {
+  .mainSection {
+    gap: 3rem;
+    width: 85%;
+  }
+}
+
+form .boxIntro {
+  border-top: .5rem solid #283dff;
+  text-align: center;
+}
+
+form h1 {
+  border-bottom: 2px solid;
+  font-size: 2rem;
+  color: aliceblue;
+  margin-bottom: 1rem;
+}
+
+form p {
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+}
+
+form .boxUserName {
+  position: relative;
+}
+
+.boxUserName>.userName {
+  margin-top: 1rem;
+  font-size: 16px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 60%;
+  border: none;
+  border-bottom: 1px solid #515151;
+  background: transparent;
+  color: aliceblue;
+}
+
+.boxUserName>.userName:focus {
+  outline: none;
+}
+
+.boxUserName>label {
+  color: aliceblue;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 60%;
+}
+
+.bar:before,
+.bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #283dff;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+.userName:focus~.bar:before,
+.userName:focus~.bar:after {
+  width: 50%;
+}
+
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.userName:focus~.highlight {
+  animation: inputHighlighter 0.3s ease;
+}
+
+@keyframes inputHighlighter {
+  from {
+    background: #283dff;
+  }
+
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+@media (max-width: 650px) {
+  .boxUserName>.userName {
+    width: 75%;
+  }
+
+  .bar {
+    width: 75%;
+  }
 }
