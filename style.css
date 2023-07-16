@@ -15,9 +15,138 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #212529;
-  color: aliceblue;
+  background-color: #123;
+  /*0d1117-394144--*/
+  color: #eee;
+  transition: all .3s ease;
+  font-family: 'Roboto', serif;
+  /*Roboto; Merriweather*/
 }
+
+body.bodyActive {
+  background-color: #def;
+  color: #000000;
+}
+
+/*Toggle btn*/
+.toggle-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 34px;
+  cursor: pointer;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #73C0FC;
+  transition: .4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  left: 2px;
+  bottom: 2px;
+  z-index: 2;
+  background-color: #e8e8e8;
+  transition: .4s;
+}
+
+.sun svg {
+  position: absolute;
+  top: 6px;
+  left: 36px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+}
+
+.moon svg {
+  fill: #73C0FC;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+}
+
+/* .switch:hover */
+.sun svg {
+  animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* .switch:hover */
+.moon svg {
+  animation: tilt 5s linear infinite;
+}
+
+@keyframes tilt {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-10deg);
+  }
+
+  75% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.toggle:checked+.slider {
+  background-color: #183153;
+}
+
+.toggle:focus+.slider {
+  box-shadow: 0 0 1px #183153;
+}
+
+.toggle:checked+.slider:before {
+  transform: translateX(30px);
+}
+
+/*Fin Toggle btn*/
 
 .mainSection {
   display: flex;
@@ -26,6 +155,7 @@ body {
   gap: 5rem;
   width: 50%;
   padding: 2rem;
+  margin-top: 3rem;
 }
 
 form {
@@ -36,23 +166,32 @@ form {
   width: 100%;
 }
 
-.mainSection form .boxQuestion {
-  background: #0d1117;
+.mainSection form .boxMain {
+  background: transparent;
+  /*212529; 0d1117*/
   border-radius: 10px;
-  box-shadow: 5px 5px 10px #010409,
-    -5px -5px 10px #464646;
-  padding: 1rem 2rem;
+  box-shadow: 3px 3px 3px 0px #000,
+    -3px -3px 3px 0px #555555;
+  padding: 1rem;
   width: 100%;
+  border: none;
+  outline: none;
 }
 
-@media (max-width: 800px) and (min-width:600px) {
+.mainSection form .boxMainActive {
+  box-shadow: 3px 3px 3px 0px #fff,
+    -3px -3px 3px 0px #aaa;
+}
+
+@media (max-width: 800px) {
   .mainSection {
     gap: 3rem;
     width: 65%;
+    padding: 1.5rem .8rem;
   }
 }
 
-@media (max-width: 599px) and (min-width:450px) {
+@media (max-width: 599px) {
   .mainSection {
     gap: 3rem;
     width: 75%;
@@ -62,7 +201,7 @@ form {
 @media (max-width: 449px) {
   .mainSection {
     gap: 3rem;
-    width: 85%;
+    width: 99%;
   }
 }
 
@@ -74,8 +213,8 @@ form .boxIntro {
 form h1 {
   border-bottom: 2px solid;
   font-size: 2rem;
-  color: aliceblue;
   margin-bottom: 1rem;
+  font-family: 'Merriweather', sans-serif;
 }
 
 form p {
@@ -96,7 +235,11 @@ form .boxUserName {
   border: none;
   border-bottom: 1px solid #515151;
   background: transparent;
-  color: aliceblue;
+  color: #eaeaea;
+}
+
+.boxUserName>.userNameActive {
+  color: #000;
 }
 
 .boxUserName>.userName:focus {
@@ -104,7 +247,6 @@ form .boxUserName {
 }
 
 .boxUserName>label {
-  color: aliceblue;
   font-size: 18px;
   font-weight: normal;
 }
@@ -174,4 +316,146 @@ form .boxUserName {
   .bar {
     width: 75%;
   }
+}
+
+.boxQuestion {
+  padding: 0.7rem 1.2rem !important;
+}
+
+.boxQuestionActive {
+  background-color: e2e8f0;
+}
+
+.boxQuestion p {
+  font-size: .98rem;
+  border-bottom: .2px solid #eaeaea;
+  margin-bottom: .7rem !important;
+  transition: .15s;
+}
+
+.boxQuestion p.numerotationQuesionActive {
+  border-bottom: .2px solid #000;
+}
+
+.boxQuestion label.question {
+  padding-left: 1.2rem;
+  font-size: 1.2rem;
+}
+
+.mainBoxAnsSupo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: .8rem !important;
+}
+
+form .submit {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  border: none;
+  background: #e0e0e0;
+  box-shadow: inset 5px 5px 5px #5c5c5c,
+    inset -5px -5px 5px #ffffff;
+}
+
+form .submit:hover {
+  cursor: pointer;
+  transform: translateY(-4px);
+}
+
+form .submitActive {
+  background-color: red;
+  color: red;
+  box-shadow: 3px 3px 3px 0px #fff inset,
+    -3px -3px 3px 0px #aaa inset;
+}
+
+/*Style personnalisé des noutons radio*/
+
+input[type="radio"] {
+  position: relative;
+  width: 6rem;
+  height: 2rem;
+  outline: none;
+  margin-right: 2rem;
+  -webkit-appearance: none;
+  background: #212529;
+  border-radius: 20px;
+  box-shadow: -5px -5px 20px rgba(255, 255, 255, .1),
+    5px 5px 15px rgba(0, 0, 0, 1),
+    inset -3px -3px 10px rgba(255, 255, 255, .1),
+    inset 3px 3px 10px rgba(0, 0, 0, 1),
+    0 0 0 1px #1f1f1f;
+  transition: .3s;
+}
+
+input[type="radio"].radioBtnActive {
+  background: #2B5876;
+  box-shadow: -5px -5px 20px rgba(255, 255, 255, .1),
+    5px 5px 15px rgba(0, 0, 0, 1),
+    inset -3px -3px 10px rgba(255, 255, 255, .1),
+    inset 3px 3px 10px rgba(0, 0, 0, 1),
+    0 0 0 1px #536976;
+}
+
+input[type="radio"]:checked {
+  background-color: #28af28;
+}
+
+input[type="radio"].radioBtnActive:checked {
+  background-color: #29ff28;
+}
+
+input[type="radio"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3.5rem;
+  height: 2rem;
+  background: linear-gradient(to top, #111, #555);
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px #232323;
+  transform: scale(.95, .98);
+  transition: all .3s;
+}
+
+input[type="radio"].radioBtnActive::before {
+  background: linear-gradient(to top, #536976, #292E49);
+}
+
+input[type="radio"]:checked::before {
+  left: 2.1rem;
+  width: 4rem;
+}
+
+input[type="radio"]::after {
+  content: '';
+  position: absolute;
+  left: 2.9rem;
+  top: calc(50% - 2px);
+  width: 4px;
+  height: 4px;
+  background: #555;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+input[type="radio"]:checked::after {
+  left: 5rem;
+  background: #00ff0f;
+  box-shadow: 0 0 5px #00ff0f,
+    0 0 15px #00ff0f,
+    0 0 30px #00ff0f;
+}
+
+.boxAnsSupo>label span.ansSupo,
+.boxAnsSupo>label input[type="radio"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.boxAnsSupo>label span.ansSupo {
+  font-size: 2rem;
 }
